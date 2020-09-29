@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { server } from '../setting';
+import { server } from '../setting.js';
 
 function Courses(props) {
     const [courses, setCourses] = useState([]);
