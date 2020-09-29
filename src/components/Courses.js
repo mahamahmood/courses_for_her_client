@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { server } from '../setting';
 
 function Courses(props) {
     const [courses, setCourses] = useState([]);
 
     const getCourses = async () => {
         try {
-            const response = fetch('/courses')
+            const response = fetch(`${server}/courses`)
             const courses = await (await response).json();
             console.log(courses);
             setCourses(courses);
