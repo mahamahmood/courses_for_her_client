@@ -24,19 +24,21 @@ function Courses(props) {
 
     return (
         <>
-            <h2>List Of All Courses</h2>
-            {courses.map(course => {
-                return (
-                    <div className="courses" key={course.id}>
-                        <img src={course.img} alt={course.title} />
-                        <h4>Title: <small>{course.title}</small></h4>
-                        <h4>Description: <small>{course.description}</small></h4>
-                        <h4>Category: <small>{course.category.name}</small></h4>
-                        <h4>Instructor Name: <small>{course.instructor.name}</small></h4>
-                        <br />
-                    </div>
-                )
-            })}
+            <div className="App">
+                <h2>List Of All Courses</h2>
+                {courses.map(course => {
+                    return (
+                        <div className="courses" key={course.id}>
+                            <img src={course.img} alt={course.title} />
+                            <h4>Title: <small>{course.title}</small></h4>
+                            <h4>Description: <small>{course.description}</small></h4>
+                            <h4>Category: <small>{course.category.name}</small></h4>
+                            <h4>Instructor Name: <small>{course.instructor.name}</small></h4>
+                            <br />
+                        </div>
+                    )
+                })}
+            </div>
         </>
     )
 }

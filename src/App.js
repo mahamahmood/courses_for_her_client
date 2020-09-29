@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import ContextStore from './context/ContextStore.js';
+// import ContextStore from './context/ContextStore.js';
 import LoginPage from './components/login/LoginPage.js';
 import Courses from './components/Courses.js'
 
