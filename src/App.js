@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import ContextStore from './context/ContextStore.js';
+import LoginPage from './components/login/LoginPage.js';
 import Courses from './components/Courses.js'
 
 // require('dotenv').config();
@@ -8,6 +9,11 @@ import Courses from './components/Courses.js'
 function App() {
   // ==== Routes ====
   const routes = [
+    {
+      path: '/login',
+      component: LoginPage,
+      key: 'login'
+    },
     {
       path: '/courses',
       component: Courses,
