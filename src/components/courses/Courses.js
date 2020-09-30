@@ -7,14 +7,14 @@ function Courses(props) {
 
     const getCourses = async () => {
         try {
-            const response = fetch(`${server}/courses`)
+            const response = fetch(`${server}/courses`);
             const courses = await (await response).json();
             console.log(courses);
             setCourses(courses);
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     useEffect(() => {
         const callCourses = async () => {

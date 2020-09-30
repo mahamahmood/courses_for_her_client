@@ -4,6 +4,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import LoginPage from './components/login/LoginPage.js';
 import Courses from './components/courses/Courses.js'
 import CourseShow from './components/courses/CourseShow.js';
+import Categories from './components/categories/Categories.js';
+import CategoryViewCourses from './components/categories/CategoryViewCourses.js';
 
 // require('dotenv').config();
 
@@ -25,6 +27,17 @@ function App() {
       path: '/courses/:id',
       component: CourseShow,
       key: 'courseShow'
+    },
+    {
+      path: '/categories',
+      exact: true,
+      component: Categories,
+      key: 'categories'
+    },
+    {
+      path: '/categories/:id',
+      component: CategoryViewCourses,
+      key: 'categoryViewCourses'
     }
   ];
   // UserContext is provided through ContextStore.js
