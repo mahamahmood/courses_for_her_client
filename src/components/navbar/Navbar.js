@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { server } from '../../setting.js';
 
-function Navbar(props) {
+function NavBar(props) {
     return (
         <div>
             <h1>Navbar</h1>
@@ -9,4 +9,4 @@ function Navbar(props) {
     );
 };
 
-export default Navbar;
+export default NavBar;
