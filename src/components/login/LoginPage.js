@@ -42,6 +42,11 @@ function Login(props) {
                 setIsLoggedIn(true);
                 console.log('testing')
                 console.log(isLoggedIn)
+                updateLoginInfo({
+                    username: '',
+                    password: '',
+                    isLoggedIn: false,
+                });
             }
             console.log(response);
             // props.history.push('/courses');
@@ -77,6 +82,13 @@ function Login(props) {
             localStorage.token = response.data.token;
             setIsLoggedIn(true);
             console.log(response);
+            updateSignupInfo({
+                first_name: '',
+                last_name: '',
+                username: '',
+                password: '',
+                isLoggedIn: false,
+            });
             // props.history.push('/courses');
         } catch (error) {
             console.error(error);
