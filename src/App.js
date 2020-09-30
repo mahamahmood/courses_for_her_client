@@ -44,6 +44,12 @@ function App() {
       path: '/dashboard',
       component: Dashboard,
       key: 'dashboard'
+    },
+    {
+      path: '/',
+      exact: true,
+      component: LoginPage,
+      key: 'default'
     }
   ];
   // UserContext is provided through ContextStore.js
