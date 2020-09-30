@@ -24,15 +24,13 @@ function Courses(props) {
     }, []);
 
     return (
-        <>
-            <div className="App">
-                <h2>List Of All Courses</h2>
-                {courses.length > 0 && courses.map((course, idx) => {
-                    return <CourseCard key={idx} course={course} />
-                   
-                })}
-            </div>
-        </>
+        <div className="App">
+            <h2>List Of All Courses</h2>
+            {courses.length > 0 && courses.map((course, idx) => {
+                return <CourseCard key={idx} course={course} />
+
+            })}
+        </div>
     )
 }
 

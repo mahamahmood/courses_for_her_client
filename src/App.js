@@ -53,8 +53,8 @@ function App() {
     }
   ];
   // UserContext is provided through ContextStore.js
+  // <ContextStore>
   return (
-    // <ContextStore>
       <BrowserRouter>
         {routes.map((route) => {
           return (
@@ -67,7 +67,6 @@ function App() {
           );
         })}
       </BrowserRouter>
-    // </ContextStore>
   );
 };
 
