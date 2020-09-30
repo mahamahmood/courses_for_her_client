@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 // import ContextStore from './context/ContextStore.js';
 import LoginPage from './components/login/LoginPage.js';
-import Courses from './components/Courses.js'
+import Courses from './components/courses/Courses.js'
+import CourseShow from './components/courses/CourseShow.js';
 
 // require('dotenv').config();
 
@@ -16,8 +17,14 @@ function App() {
     },
     {
       path: '/courses',
+      exact: true,
       component: Courses,
       key: 'courses',
+    },
+    {
+      path: '/courses/:id',
+      component: CourseShow,
+      key: 'courseShow'
     }
   ];
   // UserContext is provided through ContextStore.js

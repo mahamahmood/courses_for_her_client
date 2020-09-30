@@ -40,9 +40,11 @@ function Login(props) {
             if (response.data.token) {
                 localStorage.token = response.data.token;
                 setIsLoggedIn(true);
+                console.log('testing')
+                console.log(isLoggedIn)
             }
             console.log(response);
-            // props.history.push('/courses');
+            props.history.push('/courses');
         } catch (error) {
             console.error(error)
         }

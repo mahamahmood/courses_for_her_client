@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { server } from '../setting.js';
+import { server } from '../../setting.js';
+import CourseCard from './CourseCard.js';
 
 function Courses(props) {
     const [courses, setCourses] = useState([]);
@@ -26,17 +27,9 @@ function Courses(props) {
         <>
             <div className="App">
                 <h2>List Of All Courses</h2>
-                {courses.map(course => {
-                    return (
-                        <div className="courses" key={course.id}>
-                            <img src={course.img} alt={course.title} />
-                            <h4>Title: <small>{course.title}</small></h4>
-                            <h4>Description: <small>{course.description}</small></h4>
-                            <h4>Category: <small>{course.category.name}</small></h4>
-                            <h4>Instructor Name: <small>{course.instructor.name}</small></h4>
-                            <br />
-                        </div>
-                    )
+                {courses.length > 0 && courses.map((course, idx) => {
+                    return <CourseCard key={idx} course={course} />
+                   
                 })}
             </div>
         </>
