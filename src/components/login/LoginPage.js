@@ -44,7 +44,7 @@ function Login(props) {
                 console.log(isLoggedIn)
             }
             console.log(response);
-            props.history.push('/courses');
+            // props.history.push('/courses');
         } catch (error) {
             console.error(error)
         }
