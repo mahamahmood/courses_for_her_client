@@ -3,4 +3,4 @@ const prod = 'https://coursesforher-app-api.herokuapp.com';
 const server = prod;
 
 
-export { server }
+export { server };
