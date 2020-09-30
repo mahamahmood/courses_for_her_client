@@ -6,6 +6,7 @@ import Courses from './components/courses/Courses.js'
 import CourseShow from './components/courses/CourseShow.js';
 import Categories from './components/categories/Categories.js';
 import CategoryViewCourses from './components/categories/CategoryViewCourses.js';
+import Dashboard from './components/dashboard/Dashboard.js';
 
 // require('dotenv').config();
 
@@ -38,6 +39,11 @@ function App() {
       path: '/categories/:id',
       component: CategoryViewCourses,
       key: 'categoryViewCourses'
+    },
+    {
+      path: '/dashboard',
+      component: Dashboard,
+      key: 'dashboard'
     }
   ];
   // UserContext is provided through ContextStore.js
