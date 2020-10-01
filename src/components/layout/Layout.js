@@ -28,12 +28,13 @@ function Layout(props) {
         const userIdentification = parseJwt(localStorage.token);
         (async () => {
             try {
-                const response = await axios.get(`${server}/users/${userIdentification.id}`);
-                dispatchUserState({ type: "SET_ID", payload: response.data.user.id });
-                dispatchUserState({ type: "SET_FIRST_NAME", payload: response.data.user.first_name });
-                dispatchUserState({ type: "SET_LAST_NAME", payload: response.data.user.last_name });
-                dispatchUserState({ type: "SET_USERNAME", payload: response.data.user.username });
+                const response = await axios.get(`${server}/users/`);
+                dispatchUserState({ type: "SET_ID", payload: response.data.id });
+                dispatchUserState({ type: "SET_FIRST_NAME", payload: response.data.first_name });
+                dispatchUserState({ type: "SET_LAST_NAME", payload: response.data.last_name });
+                dispatchUserState({ type: "SET_USERNAME", payload: response.data.username });
                 dispatchUserState({ type: "SET_LOGGEDIN", payload: true });
+                console.log(userState)
             } catch (error) {
                 console.log(error)
             }
