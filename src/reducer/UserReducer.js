@@ -8,12 +8,12 @@ const UserReducer = (state, action) => {
         case 'SET_FIRST_NAME':
             return {
                 ...state,
-                firstName: action.payload
+                first_name: action.payload
             };
         case 'SET_LAST_NAME':
             return {
                 ...state,
-                lastName: action.payload
+                last_name: action.payload
             };
         case 'SET_USERNAME':
             return {

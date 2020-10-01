@@ -6,8 +6,8 @@ import UserReducer from "../reducer/UserReducer";
 
 const defaultUserState = {
     id: '',
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     username: '',
     courses: [],
     loggedIn: false
@@ -18,17 +18,17 @@ const defaultUserState = {
 // You can update the state using dispathcUserState()
 // UserReducer.js requires an object with type and paylaod. type will be the type of action that will be performed in the reducer switch cases and payload is the new content.
 
-function ContextStore({ childern }) {
-    const [ userState, dispathcUserState ] = useReducer( UserReducer, defaultUserState );
-
+export default function ContextStore({ children }) {
+    const [userState, dispatchUserState] = useReducer(
+        UserReducer,
+        defaultUserState
+    );
     return (
-        <UserContext.Provider value={[ userState, dispathcUserState ]}>
-            {childern}
+        <UserContext.Provider value={[userState, dispatchUserState]}>
+            {children}
         </UserContext.Provider>
     );
-};
-
-export default ContextStore;
+}
 
 // UserContext will be used by useContext() to check state changes
 
