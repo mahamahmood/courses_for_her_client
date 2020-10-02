@@ -10,7 +10,7 @@ const defaultUserState = {
     last_name: '',
     username: '',
     courses: [],
-    loggedIn: false
+    isLoggedIn: false
 };
 
 // ==== ContextStore ====

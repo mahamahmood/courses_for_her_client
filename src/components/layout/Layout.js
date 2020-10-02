@@ -3,12 +3,14 @@ import { server } from '../../setting.js';
 import { UserContext } from '../../context/ContextStore.js';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+// import jwt_decode from 'jwt-decode';
+
 
 function Layout(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
-
+    
     const handleLogOut = () => {
-        userState.loggedIn = false
+        userState.isLoggedIn = false
         localStorage.clear();
         props.history.push("/login");
     };
@@ -20,12 +22,15 @@ function Layout(props) {
             return null;
         }
     };
+    // console.log(localStorage.id)
     useEffect(() => {
-        if (!localStorage.token) {
-            userState.loggedIn = false
-            return
+        if (localStorage.token) {
+            userState.isLoggedIn = true
+        }else{
+            userState.isLoggedIn = false
         }
-        const userIdentification = parseJwt(localStorage.token);
+        // const userIdentification = parseJwt(localStorage.token);
+
         (async () => {
             try {
                 const response = await axios.get(`${server}/users/`);
@@ -33,8 +38,8 @@ function Layout(props) {
                 dispatchUserState({ type: "SET_FIRST_NAME", payload: response.data.first_name });
                 dispatchUserState({ type: "SET_LAST_NAME", payload: response.data.last_name });
                 dispatchUserState({ type: "SET_USERNAME", payload: response.data.username });
-                dispatchUserState({ type: "SET_LOGGEDIN", payload: true });
-                console.log(userState)
+                dispatchUserState({ type: "SET_ISLOGGEDIN", payload: true });
+                // console.log(userState)
             } catch (error) {
                 console.log(error)
             }
@@ -53,7 +58,7 @@ function Layout(props) {
                 <div>
                     <a href='/categories'>Categories</a>
                 </div>
-                {userState.loggedIn ?
+                {userState.isLoggedIn ?
                     <>
                         <div>
                             <a href='/dashboard'>Dashboard</a>
@@ -65,7 +70,7 @@ function Layout(props) {
                         </div>
                     </>
                 }
-                {userState.loggedIn ?
+                {userState.isLoggedIn ?
                     <div>
                         <button onClick={handleLogOut}>Log Out</button>
                     </div> :

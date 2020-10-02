@@ -20,10 +20,10 @@ const UserReducer = (state, action) => {
                 ...state,
                 username: action.payload
             };
-        case 'SET_LOGGEDIN':
+        case 'SET_ISLOGGEDIN':
             return {
                 ...state,
-                loggedIn: action.payload
+                isLoggedIn: action.payload
             };
         default:
             return state;

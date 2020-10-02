@@ -4,10 +4,26 @@ import { UserContext } from '../../context/ContextStore.js';
 import axios from 'axios';
 import '../../App.css';
 import Layout from '../layout/Layout.js';
+import jwt_decode from 'jwt-decode';
+
 
 function Login(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
-    // const [loggedIn, updateLogdedIn] = useState(false)
+    const [user, setUser] = useState({
+        id: ''
+    });
+    // ==== Auth Token Check ==== //
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    useEffect(() => {
+        if (localStorage.token != 'undefined' && localStorage.token) {
+            setIsLoggedIn(true);
+        } else {
+            setIsLoggedIn(false);
+        }
+        console.log("isLoggedIn: ", isLoggedIn);
+        // console.log(userState)
+    }, [isLoggedIn]);
+
     // ==== login ==== //
     const [loginInfo, updateLoginInfo] = useState({
         username: '',
@@ -27,8 +43,25 @@ function Login(props) {
                         password: loginInfo.password,
                     }
                 });
+            // localStorage.setItem('token', response.data.token);
+            // localStorage.getItem('token');
+            // localStorage.setItem('id', response.data.user.id);
+            // localStorage.setItem('user', JSON.stringify(user));
+            // JSON.parse(localStorage.getItem('user'));
+            setIsLoggedIn(true);
+            console.log(localStorage)
             localStorage.token = response.data.token;
-            // console.log(localStorage)
+            const token = localStorage.token;
+            const decoded = jwt_decode(token);
+            console.log(decoded);
+            localStorage.setItem('id', response.data.user.id)
+            // decode header by passing in options (useful for when you need `kid` to verify a JWT):
+            // const decodedHeader = jwt_decode(token, { header: true });
+            // console.log(decodedHeader);
+            console.log(localStorage)
+            console.log(user)
+            console.log(response.data.user.first_name, response.data.user.id)
+            // console.log(userState);
             props.history.push('/dashboard');
         } catch (error) {
             console.error(error)
@@ -41,6 +74,7 @@ function Login(props) {
         last_name: '',
         username: '',
         password: '',
+        // isLoggedIn: false,
     });
 
     const handleSignupChange = (event) => {
@@ -58,7 +92,15 @@ function Login(props) {
                         password: signupInfo.password,
                     }
                 });
-            localStorage.token = response.data.token;
+            localStorage.setItem('token', response.data.token);
+            localStorage.getItem('token');
+            localStorage.setItem('id', user.id);
+            localStorage.setItem('user', JSON.stringify(user));
+            JSON.parse(localStorage.getItem('user'));
+
+            setIsLoggedIn(true);
+            console.log(isLoggedIn)
+            console.log(response.data.user.first_name)
             console.log(response, userState);
             props.history.push('/dashboard');
         } catch (error) {
@@ -66,10 +108,11 @@ function Login(props) {
         }
     };
 
+
     // ==== return ==== //
     return (
         <div className="App">
-            <Layout>
+            <Layout isLoggedIn={isLoggedIn}>
                 <div>
                     <h2>Log In</h2>
                     <form onSubmit={handleLoginSubmit}>
