@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { server } from '../../setting.js';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './category.css';
 
 function CategoryViewCourses(props) {
     const [category, updateCategory] = useState({});
@@ -20,38 +21,30 @@ function CategoryViewCourses(props) {
     }, []);
 
     return (
-        <div>
+        <div className="container">
+            <div><Link to={'/categories'}>Back to All Categories</Link></div>
+            <h3 className="cateogry-main">Category: {category.name}</h3>
             {Object.keys(category).length > 0 ? (
                 <div>
-                    <Link to={'/categories'}>Back to All Categories</Link>
-                    <div>
-                        {category.courses.map((course) => {
-                            return (
-                                <div>
-                                    <div key={course.id}>
+                    {category.courses.map((course) => {
+                        return (
+                            <div className="CourseCard">
+                                <div className="card large" key={course.id}>
+                                    <div className="card-image">
                                         <img src={course.img} alt={course.title} />
-                                        <h4>Title: <small>{course.title}</small></h4>
-                                        <h4>Description: <small>{course.description}</small></h4>
-                                        {/* <h4>Category: <small>{course.category.name}</small></h4> */}
-                                        <br />
-                                        {/* <h3>Course Instructor:</h3> */}
-                                        {/* <p>Name: {course.instructor.name}</p> */}
-                                        {/* <p>Title: {course.instructor.title}</p>
-                                    <p>LinkedIn: {course.instructor.linkedin}</p>
-                                    <p>Email: {course.instructor.email}</p>
-                                    <p>Bio: {course.instructor.bio}</p> */}
-                                        {/* <CourseEnrollment course={course} /> */}
-                                        <Link style={{ textDecoration: 'none' }} to={`/courses/${course.id}`}>View course</Link>
                                     </div>
-                                    {/* <div>
-                                        <Link style={{ textDecoration: 'none' }} from={'*'} to={`/categories/${category.id}/${course.id}`}>
+                                    <div className="card-content">
+                                        <span className="card-title grey-text text-darken-4"><strong>Title: </strong>{course.title}</span>
+                                    </div>
+                                    <div>
+                                        <Link className="btn pink darken-2 waves-effect btn-large" style={{ textDecoration: 'none' }} from={'*'} to={`/courses/${course.id}`}>
                                             <div key={course.id}>View Course</div>
                                         </Link>
-                                    </div> */}
+                                    </div>
                                 </div>
-                            )
-                        })}
-                    </div>
+                            </div>
+                        )
+                    })}
                 </div>
             ) : (
                     <div></div>

@@ -10,3 +10,12 @@ body {
     display: flex;
     flex-direction: column;
 }
+.CourseCard{
+    padding-bottom: 20px;
+    margin: 0px 100px;
+}
+.courses-main{
+    text-align: center;
+    padding: 5x;
+    font-size: 2.4em;
+}

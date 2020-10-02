@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { server } from '../../setting.js';
 import CategoryCard from './CategoryCard.js';
+import './category.css';
 
 function Categories(props) {
     const [categories, setCategories] = useState([]);
@@ -24,8 +25,8 @@ function Categories(props) {
     }, []);
 
     return (
-        <div className="App">
-            <h2>List Of All Categories</h2>
+        <div className="container">
+            <h2 className="cateogry-main">Explore Courses by Category</h2>
             {categories.length > 0 && categories.map((category, idx)=> {
                 return <CategoryCard key={idx} category={category} />
             })}
