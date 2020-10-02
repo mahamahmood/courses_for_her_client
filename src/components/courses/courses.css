@@ -1,0 +1,12 @@
+body {
+    background-color: whitesmoke;
+}
+/* .img-show{
+    padding: 0px 35px;
+} */
+.container-show {
+    margin: 0 20px 10px 20px;
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+}

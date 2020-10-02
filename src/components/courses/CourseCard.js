@@ -5,19 +5,22 @@ function CourseCard(props) {
     const course = props.course;
 
     return (
-        <div>
-            <div className="courses" key={course.id}>
-                <img src={course.img} alt={course.title} />
-                <h4>Title: <small>{course.title}</small></h4>
-                <h4>Description: <small>{course.description}</small></h4>
-                <h4>Category: <small>{course.category.name}</small></h4>
-                <br />
-            </div>
-            <div>
-                <Link style={{ textDecoration: 'none' }} from={'*'} to={`/courses/${course.id}`}>
+        <div className="CourseCard">
+            <div className="card large" key={course.id}>
+                <div className="card-image">
+                    <img src={course.img} alt={course.title} />
+                </div>
+                <div className="card-content">
+                    <span className="card-title grey-text text-darken-4"><strong>Title: </strong>{course.title}</span>
+                    <span className="card-title  grey-text text-darken-4"><strong>Category:</strong> {course.category.name}</span>
+                </div>
+                <div>
+                <Link className="btn pink darken-2 waves-effect btn-large" style={{ textDecoration: 'none' }} from={'*'} to={`/courses/${course.id}`}>
                     <div key={course.id}>View Course</div>
                 </Link>
             </div>
+            </div>
+            
         </div>
     )
 };

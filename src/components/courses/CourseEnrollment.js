@@ -5,7 +5,7 @@ import axios from 'axios';
 function CourseEnrollement(props) {
     return (
         <div>
-            <button>Enroll</button>
+            <button className="btn pink darken-2 waves-effect btn-large">Enroll</button>
         </div>
     )
 };

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { server } from '../../setting.js';
 import CourseCard from './CourseCard.js';
+import 'materialize-css/dist/css/materialize.min.css'
+import '../courses/courses.css';
 
 function Courses(props) {
     const [courses, setCourses] = useState([]);
@@ -24,8 +26,8 @@ function Courses(props) {
     }, []);
 
     return (
-        <div className="App">
-            <h2>List Of All Courses</h2>
+        <div className="container">
+            <h3 className="row">Explore All Courses</h3>
             {courses.length > 0 && courses.map((course, idx) => {
                 return <CourseCard key={idx} course={course} />
 
