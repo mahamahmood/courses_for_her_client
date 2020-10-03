@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import Footer from './Footer';
 import '../main.css';
-// import jwt_decode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 
 function Layout(props) {
@@ -17,31 +17,29 @@ function Layout(props) {
         props.history.push("/login");
     };
 
-    const parseJwt = (token) => {
-        try {
-            return JSON.parse(atob(token.split(".")[1]));
-        } catch (error) {
-            return null;
-        }
+    const decodedToken = (token) => {
+		return jwt_decode(token);
     };
-    // console.log(localStorage.id)
+
     useEffect(() => {
         if (localStorage.token) {
             userState.isLoggedIn = true
         }else{
             userState.isLoggedIn = false
         }
-        // const userIdentification = parseJwt(localStorage.token);
-
         (async () => {
             try {
-                const response = await axios.get(`${server}/users/`);
+                const idx = decodedToken(localStorage.token).user.id
+                console.log(idx)
+                console.log(localStorage.token)
+                const response = await axios.get(`${server}/users/${idx}`);
+                console.log(response);
                 dispatchUserState({ type: "SET_ID", payload: response.data.id });
                 dispatchUserState({ type: "SET_FIRST_NAME", payload: response.data.first_name });
                 dispatchUserState({ type: "SET_LAST_NAME", payload: response.data.last_name });
                 dispatchUserState({ type: "SET_USERNAME", payload: response.data.username });
                 dispatchUserState({ type: "SET_ISLOGGEDIN", payload: true });
-                // console.log(userState)
+                console.log(userState)
             } catch (error) {
                 console.log(error)
             }
@@ -74,10 +72,10 @@ function Layout(props) {
                 }
                 {userState.isLoggedIn ?
                     <div>
-                        <button onClick={handleLogOut}>Log Out</button>
+                        <button className="btn pink darken-2 waves-effect btn-medium" onClick={handleLogOut}>Log Out</button>
                     </div> :
                     <div>
-                        <button onClick={handleLogOut}>Log In</button>
+                        <button className="btn pink darken-2 waves-effect btn-medium" onClick={handleLogOut}>Log In</button>
                     </div>
                 }
             </div>

@@ -67,6 +67,31 @@ function Login(props) {
             console.error(error)
         }
     };
+    const [userMain, getUserMain] = useState({
+        id: '',
+        first_name: '',
+        last_name: '',
+        username: '',
+        courses: [],
+    });
+
+    const decodedToken = (token) => {
+		return jwt_decode(token);
+    };
+    useEffect(()=>{
+        (async()=> {
+            try{
+                const idx = decodedToken(localStorage.token).user.id
+                console.log(idx)
+                const response = await axios.get(`${server}/users/${idx}`)
+                console.log(response)
+                getUserMain({userMain, ...response.data});
+            } catch (error) {
+                console.error(error);
+            }
+        }) ();
+    }, []);
+    console.log(userMain);
 
     // === signup ==== //
     const [signupInfo, updateSignupInfo] = useState({
@@ -111,98 +136,100 @@ function Login(props) {
 
     // ==== return ==== //
     return (
-        <div className="container">
+        <div>
             <Layout isLoggedIn={isLoggedIn}>
-                <div>
-                    <h3>Log In</h3>
-                    <div className="row">
-                        <form className="col s12" onSubmit={handleLoginSubmit}>
-                            <div className="row">
-                                <div className="input-field col s6">
-                                    <input
-                                        className="validate"
-                                        type='text'
-                                        name='username'
-                                        id='loginUsername'
-                                        value={loginInfo.username}
-                                        onChange={handleLoginChange} />
+                <div className="container">
+                    <div>
+                        <h3>Log In</h3>
+                        <div className="row">
+                            <form className="col s12" onSubmit={handleLoginSubmit}>
+                                <div className="row">
+                                    <div className="input-field col s6">
+                                        <input
+                                            className="validate"
+                                            type='text'
+                                            name='username'
+                                            id='loginUsername'
+                                            value={loginInfo.username}
+                                            onChange={handleLoginChange} />
 
-                                    <label htmlFor='loginUsername'>Username</label>
+                                        <label htmlFor='loginUsername'>Username</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="input-field col s6">
-                                    <input
-                                        className="validate"
-                                        type='password'
-                                        name='password'
-                                        id='loginPassword'
-                                        value={loginInfo.password}
-                                        onChange={handleLoginChange} />
-                                    <label htmlFor='loginPassword'>Password</label>
+                                <div className="row">
+                                    <div className="input-field col s6">
+                                        <input
+                                            className="validate"
+                                            type='password'
+                                            name='password'
+                                            id='loginPassword'
+                                            value={loginInfo.password}
+                                            onChange={handleLoginChange} />
+                                        <label htmlFor='loginPassword'>Password</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <input type='submit' />
-                        </form>
+                                <input className="btn pink darken-2 waves-effect btn-medium" type='submit' />
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <div className='or'>
-                    {/* make a border separator */}
-                </div>
-                <div>
-                    <h3>Sign Up</h3>
-                    <div className="row">
-                        <form className="col s12" onSubmit={handleSignupSubmit}>
-                            <div className="row">
-                                <div className="input-field col s6">
-                                    <input
-                                        className="validate"
-                                        type='text'
-                                        name='first_name'
-                                        id='signupFirstName'
-                                        value={signupInfo.first_name}
-                                        onChange={handleSignupChange} />
-                                    <label htmlFor='signupFirstName'>First Name</label>
+                    <div className='or'>
+                        {/* make a border separator */}
+                    </div>
+                    <div>
+                        <h3>Sign Up</h3>
+                        <div className="row">
+                            <form className="col s12" onSubmit={handleSignupSubmit}>
+                                <div className="row">
+                                    <div className="input-field col s6">
+                                        <input
+                                            className="validate"
+                                            type='text'
+                                            name='first_name'
+                                            id='signupFirstName'
+                                            value={signupInfo.first_name}
+                                            onChange={handleSignupChange} />
+                                        <label htmlFor='signupFirstName'>First Name</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="input-field col s6">
-                                    <input
-                                        className="validate"
-                                        type='text'
-                                        name='last_name'
-                                        id='signupLastName'
-                                        value={signupInfo.last_name}
-                                        onChange={handleSignupChange} />
-                                    <label htmlFor='signupLastName'>Last Name</label>
+                                <div className="row">
+                                    <div className="input-field col s6">
+                                        <input
+                                            className="validate"
+                                            type='text'
+                                            name='last_name'
+                                            id='signupLastName'
+                                            value={signupInfo.last_name}
+                                            onChange={handleSignupChange} />
+                                        <label htmlFor='signupLastName'>Last Name</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="input-field col s6">
-                                    <input
-                                        className="validate"
-                                        type='text'
-                                        name='username'
-                                        id='signupUsername'
-                                        value={signupInfo.username}
-                                        onChange={handleSignupChange} />
-                                    <label htmlFor='signupUsername'>Username</label>
+                                <div className="row">
+                                    <div className="input-field col s6">
+                                        <input
+                                            className="validate"
+                                            type='text'
+                                            name='username'
+                                            id='signupUsername'
+                                            value={signupInfo.username}
+                                            onChange={handleSignupChange} />
+                                        <label htmlFor='signupUsername'>Username</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="input-field col s6">
-                                    <input
-                                        className="validate"
-                                        type='password'
-                                        name='password'
-                                        id='signupPassword'
-                                        value={signupInfo.password}
-                                        onChange={handleSignupChange} />
-                                    <label htmlFor='signupPassword'>Password</label>
+                                <div className="row">
+                                    <div className="input-field col s6">
+                                        <input
+                                            className="validate"
+                                            type='password'
+                                            name='password'
+                                            id='signupPassword'
+                                            value={signupInfo.password}
+                                            onChange={handleSignupChange} />
+                                        <label htmlFor='signupPassword'>Password</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <input type='submit' />
-                        </form>
+                                <input className="btn pink darken-2 waves-effect btn-medium" type='submit' />
+                            </form>
+                        </div>
                     </div>
                 </div>
             </Layout>
