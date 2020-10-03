@@ -4,7 +4,7 @@ import '../main.css';
 function Footer(props) {
     return (
         <div className="footer">
-            <footer className="page-footer">
+            <footer className="page-footer teal darken-2">
                 <div className="container">
                     <div className="row">
                         <div className="col l6 s12">

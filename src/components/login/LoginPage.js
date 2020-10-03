@@ -111,76 +111,99 @@ function Login(props) {
 
     // ==== return ==== //
     return (
-        <div className="App">
+        <div className="container">
             <Layout isLoggedIn={isLoggedIn}>
                 <div>
-                    <h2>Log In</h2>
-                    <form onSubmit={handleLoginSubmit}>
-                        <div>
-                            <label htmlFor='loginUsername'>Username</label><br />
-                            <input
-                                type='text'
-                                name='username'
-                                id='loginUsername'
-                                value={loginInfo.username}
-                                onChange={handleLoginChange} /><br />
-                        </div>
-                        <div>
-                            <label htmlFor='loginPassword'>Password</label><br />
-                            <input
-                                type='password'
-                                name='password'
-                                id='loginPassword'
-                                value={loginInfo.password}
-                                onChange={handleLoginChange} /><br />
-                        </div>
-                        <input type='submit' />
-                    </form>
+                    <h3>Log In</h3>
+                    <div className="row">
+                        <form className="col s12" onSubmit={handleLoginSubmit}>
+                            <div className="row">
+                                <div className="input-field col s6">
+                                    <input
+                                        className="validate"
+                                        type='text'
+                                        name='username'
+                                        id='loginUsername'
+                                        value={loginInfo.username}
+                                        onChange={handleLoginChange} />
+
+                                    <label htmlFor='loginUsername'>Username</label>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="input-field col s6">
+                                    <input
+                                        className="validate"
+                                        type='password'
+                                        name='password'
+                                        id='loginPassword'
+                                        value={loginInfo.password}
+                                        onChange={handleLoginChange} />
+                                    <label htmlFor='loginPassword'>Password</label>
+                                </div>
+                            </div>
+                            <input type='submit' />
+                        </form>
+                    </div>
                 </div>
                 <div className='or'>
                     {/* make a border separator */}
                 </div>
                 <div>
-                    <h2>Sign Up</h2>
-                    <form onSubmit={handleSignupSubmit}>
-                        <div>
-                            <label htmlFor='signupFirstName'>First Name</label><br />
-                            <input
-                                type='text'
-                                name='first_name'
-                                id='signupFirstName'
-                                value={signupInfo.first_name}
-                                onChange={handleSignupChange} /><br />
-                        </div>
-                        <div>
-                            <label htmlFor='signupLastName'>Last Name</label><br />
-                            <input
-                                type='text'
-                                name='last_name'
-                                id='signupLastName'
-                                value={signupInfo.last_name}
-                                onChange={handleSignupChange} /><br />
-                        </div>
-                        <div>
-                            <label htmlFor='signupUsername'>Username</label><br />
-                            <input
-                                type='text'
-                                name='username'
-                                id='signupUsername'
-                                value={signupInfo.username}
-                                onChange={handleSignupChange} /><br />
-                        </div>
-                        <div>
-                            <label htmlFor='signupPassword'>Password</label><br />
-                            <input
-                                type='password'
-                                name='password'
-                                id='signupPassword'
-                                value={signupInfo.password}
-                                onChange={handleSignupChange} /><br />
-                        </div>
-                        <input type='submit' />
-                    </form>
+                    <h3>Sign Up</h3>
+                    <div className="row">
+                        <form className="col s12" onSubmit={handleSignupSubmit}>
+                            <div className="row">
+                                <div className="input-field col s6">
+                                    <input
+                                        className="validate"
+                                        type='text'
+                                        name='first_name'
+                                        id='signupFirstName'
+                                        value={signupInfo.first_name}
+                                        onChange={handleSignupChange} />
+                                    <label htmlFor='signupFirstName'>First Name</label>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="input-field col s6">
+                                    <input
+                                        className="validate"
+                                        type='text'
+                                        name='last_name'
+                                        id='signupLastName'
+                                        value={signupInfo.last_name}
+                                        onChange={handleSignupChange} />
+                                    <label htmlFor='signupLastName'>Last Name</label>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="input-field col s6">
+                                    <input
+                                        className="validate"
+                                        type='text'
+                                        name='username'
+                                        id='signupUsername'
+                                        value={signupInfo.username}
+                                        onChange={handleSignupChange} />
+                                    <label htmlFor='signupUsername'>Username</label>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="input-field col s6">
+                                    <input
+                                        className="validate"
+                                        type='password'
+                                        name='password'
+                                        id='signupPassword'
+                                        value={signupInfo.password}
+                                        onChange={handleSignupChange} />
+                                    <label htmlFor='signupPassword'>Password</label>
+                                </div>
+                            </div>
+                            <input type='submit' />
+                        </form>
+                    </div>
                 </div>
             </Layout>
         </div>
