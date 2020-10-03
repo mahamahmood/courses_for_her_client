@@ -25,6 +25,7 @@ function Dashboard(props) {
     // }, [userState.loggedIn]);
 
     return (
+        <>
         <Layout>
             <div>
                 <h1>Dashboard</h1>
@@ -42,6 +43,7 @@ function Dashboard(props) {
                 </div> */}
             </div>
         </Layout>
+        </>
     );
 };
 

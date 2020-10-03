@@ -3,6 +3,8 @@ import { server } from '../../setting.js';
 import { UserContext } from '../../context/ContextStore.js';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import Footer from './Footer';
+import '../main.css';
 // import jwt_decode from 'jwt-decode';
 
 
@@ -82,6 +84,7 @@ function Layout(props) {
             <div>
                 {props.children}
             </div>
+            <Footer />
         </div>
     )
 };
