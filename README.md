@@ -1,3 +1,12 @@
+# Courses For Her App
+
+## Summary
+This app was created to give access to education to women around the world. Its built using react and ruby on rails. Used one to one and many to many relationships using postgresql. Authentation and authoraization are one of the many features that i wanted to learn in this course. So far, I can get the token and decode. 
+
+## Link to live site
+[CoursesForHer](https://coursesforher.herokuapp.com)
+
+==================
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
