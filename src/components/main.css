@@ -10,5 +10,21 @@ main {
 }
 
 .footer{
-    padding-top: 360px;
+    padding-top: 50px;
+}
+.log-in {
+    padding: 20px;
+    width: 50%;
+}
+.sign-up {
+    padding: 20px;
+    width: 50%;
+
+}
+.or{
+    padding: 20px;
+}
+.login-page{
+    display: flex;
+    justify-content: space-between;
 }

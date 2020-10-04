@@ -5,7 +5,7 @@ import axios from 'axios';
 import '../../App.css';
 import Layout from '../layout/Layout.js';
 import jwt_decode from 'jwt-decode';
-
+import '../main.css';
 
 function Login(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
@@ -138,8 +138,8 @@ function Login(props) {
     return (
         <div>
             <Layout isLoggedIn={isLoggedIn}>
-                <div className="container">
-                    <div>
+                <div className="container login-page">
+                    <div className="card log-in">
                         <h3>Log In</h3>
                         <div className="row">
                             <form className="col s12" onSubmit={handleLoginSubmit}>
@@ -150,10 +150,10 @@ function Login(props) {
                                             type='text'
                                             name='username'
                                             id='loginUsername'
+                                            placeholder='username'
                                             value={loginInfo.username}
                                             onChange={handleLoginChange} />
-
-                                        <label htmlFor='loginUsername'>Username</label>
+                                        {/* <label htmlFor='loginUsername'>Username</label> */}
                                     </div>
                                 </div>
                                 <div className="row">
@@ -164,8 +164,9 @@ function Login(props) {
                                             name='password'
                                             id='loginPassword'
                                             value={loginInfo.password}
+                                            placeholder="password"
                                             onChange={handleLoginChange} />
-                                        <label htmlFor='loginPassword'>Password</label>
+                                        {/* <label htmlFor='loginPassword'>Password</label> */}
                                     </div>
                                 </div>
                                 <input className="btn pink darken-2 waves-effect btn-medium" type='submit' />
@@ -175,7 +176,7 @@ function Login(props) {
                     <div className='or'>
                         {/* make a border separator */}
                     </div>
-                    <div>
+                    <div className="card sign-up">
                         <h3>Sign Up</h3>
                         <div className="row">
                             <form className="col s12" onSubmit={handleSignupSubmit}>
@@ -187,8 +188,9 @@ function Login(props) {
                                             name='first_name'
                                             id='signupFirstName'
                                             value={signupInfo.first_name}
+                                            placeholder="First Name"
                                             onChange={handleSignupChange} />
-                                        <label htmlFor='signupFirstName'>First Name</label>
+                                        {/* <label htmlFor='signupFirstName'>First Name</label> */}
                                     </div>
                                 </div>
                                 <div className="row">
@@ -199,8 +201,9 @@ function Login(props) {
                                             name='last_name'
                                             id='signupLastName'
                                             value={signupInfo.last_name}
+                                            placeholder="Last Name"
                                             onChange={handleSignupChange} />
-                                        <label htmlFor='signupLastName'>Last Name</label>
+                                        {/* <label htmlFor='signupLastName'>Last Name</label> */}
                                     </div>
                                 </div>
                                 <div className="row">
@@ -211,8 +214,9 @@ function Login(props) {
                                             name='username'
                                             id='signupUsername'
                                             value={signupInfo.username}
+                                            placeholder="username"
                                             onChange={handleSignupChange} />
-                                        <label htmlFor='signupUsername'>Username</label>
+                                        {/* <label htmlFor='signupUsername'>Username</label> */}
                                     </div>
                                 </div>
                                 <div className="row">
@@ -223,8 +227,9 @@ function Login(props) {
                                             name='password'
                                             id='signupPassword'
                                             value={signupInfo.password}
+                                            placeholder="password"
                                             onChange={handleSignupChange} />
-                                        <label htmlFor='signupPassword'>Password</label>
+                                        {/* <label htmlFor='signupPassword'>Password</label> */}
                                     </div>
                                 </div>
                                 <input className="btn pink darken-2 waves-effect btn-medium" type='submit' />

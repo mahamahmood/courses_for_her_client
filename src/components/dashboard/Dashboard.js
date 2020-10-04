@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { server } from '../../setting.js';
 import Layout from '../layout/Layout.js';
 import { UserContext } from '../../context/ContextStore.js';
+import CreateCourse from '../courses/CreateCourse.js';
 
 function Dashboard(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
@@ -30,6 +31,7 @@ function Dashboard(props) {
             <div>
                 <h1>Dashboard</h1>
                 <h2>{userState.username}</h2>
+                <CreateCourse />
                 {/* <div>
                     {courses.map((course) => {
                         return (
