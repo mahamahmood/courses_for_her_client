@@ -6,7 +6,6 @@ This app was created to give access to education to women around the world. Its 
 ## Link to live site
 [CoursesForHer](https://coursesforher.herokuapp.com)
 
-==================
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
