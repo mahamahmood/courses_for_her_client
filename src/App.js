@@ -7,7 +7,7 @@ import CourseShow from './components/courses/CourseShow.js';
 import Categories from './components/categories/Categories.js';
 import CategoryViewCourses from './components/categories/CategoryViewCourses.js';
 import Dashboard from './components/dashboard/Dashboard.js';
-import Home from './components/static/Home.js';
+// import Home from './components/static/Home.js';
 
 // require('dotenv').config();
 
@@ -49,7 +49,7 @@ function App() {
     {
       path: '/',
       exact: true,
-      component: Home,
+      component: LoginPage,
       key: 'default'
     }
   ];
