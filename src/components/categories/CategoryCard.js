@@ -8,7 +8,7 @@ function CategoryCard(props) {
     return (
         <div className="cateogry collection">
             <Link style={{ textDecoration: 'none' }} from={'*'} to={`/categories/${category.id}`}>
-                <a className="collection-item pink-text text-darken-2" key={category.id}>{category.name}</a>
+                <p className="collection-item pink-text text-darken-2" key={category.id}>{category.name}</p>
             </Link>
         </div>
     );
