@@ -1,8 +1,8 @@
 body {
     background-color: whitesmoke;
 }
-/* .img-show{
-    padding: 0px 35px;
+/* .card-image{
+    padding: 35px;
 } */
 .container-show {
     margin: 0 20px 10px 20px;
@@ -12,13 +12,17 @@ body {
 }
 .CourseCard{
     padding-bottom: 20px;
-    margin: 0px 100px;
+    margin: 0px 200px;
 }
 .courses-main{
     text-align: center;
     padding: 5x;
     font-size: 2.4em;
 }
-.createCourse{
+/* .createCourse{
     padding: 20px;
+} */
+.backTo{
+    margin: 10px;
+    margin-left: 40px;
 }

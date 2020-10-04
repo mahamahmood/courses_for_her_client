@@ -6,11 +6,12 @@ import axios from 'axios';
 import Footer from './Footer';
 import '../main.css';
 import jwt_decode from 'jwt-decode';
+import './layout.css';
 
 
 function Layout(props) {
     const [userState, dispatchUserState] = useContext(UserContext);
-    
+
     const handleLogOut = () => {
         userState.isLoggedIn = false
         localStorage.clear();
@@ -18,13 +19,13 @@ function Layout(props) {
     };
 
     const decodedToken = (token) => {
-		return jwt_decode(token);
+        return jwt_decode(token);
     };
 
     useEffect(() => {
         if (localStorage.token) {
             userState.isLoggedIn = true
-        }else{
+        } else {
             userState.isLoggedIn = false
         }
         (async () => {
@@ -48,41 +49,47 @@ function Layout(props) {
 
     return (
         <div>
-            <div>
-                <div>
-                    <a href='/'>Home</a>
+            <div className="header">
+                <div className='logoTitleContainer'>
+                    <div className='logoBox'></div>
+                    <h1 className='headerTitle'>CoursesForHer</h1>
                 </div>
-                <div>
-                    <a href='/courses'>Courses</a>
-                </div>
-                <div>
-                    <a href='/categories'>Categories</a>
-                </div>
-                {userState.isLoggedIn ?
-                    <>
-                        <div>
-                            <a href='/dashboard'>Dashboard</a>
-                        </div>
-                    </> :
-                    <>
-                        <div>
-                            <a href='/login'>Dashboard</a>
-                        </div>
-                    </>
-                }
-                {userState.isLoggedIn ?
-                    <div>
-                        <button className="btn pink darken-2 waves-effect btn-medium" onClick={handleLogOut}>Log Out</button>
-                    </div> :
-                    <div>
-                        <button className="btn pink darken-2 waves-effect btn-medium" onClick={handleLogOut}>Log In</button>
+                <div className="navBar">
+                    <div className='navItem'>
+                        <a className='itemText' href='/'>Home</a>
                     </div>
-                }
+                    <div className='navItem'>
+                        <a className='itemText' href='/courses'>Courses</a>
+                    </div>
+                    <div className='navItem'>
+                        <a className='itemText' href='/categories'>Categories</a>
+                    </div>
+                    {userState.isLoggedIn ?
+                        <>
+                            <div className='navItem'>
+                                <a className='itemText' href='/dashboard'>Dashboard</a>
+                            </div>
+                        </> :
+                        <>
+                            <div className='navItem'>
+                                <a className='itemText' href='/login'>Dashboard</a>
+                            </div>
+                        </>
+                    }
+                    {userState.isLoggedIn ?
+                        <div className='navItem'>
+                            <button className="navItem btn pink darken-2 waves-effect btn-medium" onClick={handleLogOut}>Log Out</button>
+                        </div> :
+                        <div className='navItem'>
+                            <button className="navItem btn pink darken-2 waves-effect btn-medium" onClick={handleLogOut}>Log In</button>
+                        </div>
+                    }
+                </div>
             </div>
             <div>
                 {props.children}
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 };

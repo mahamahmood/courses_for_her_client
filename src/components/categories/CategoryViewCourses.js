@@ -23,8 +23,8 @@ function CategoryViewCourses(props) {
 
     return (
         <Layout>
+            <Link className="backTo pink darken-2 waves-effect btn" to={'/categories'}>Back to All Categories</Link>
             <div className="container">
-                <div><Link to={'/categories'}>Back to All Categories</Link></div>
                 <h3 className="cateogry-main">Category: {category.name}</h3>
                 {Object.keys(category).length > 0 ? (
                     <div>
